@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  channel_id: 1
-  category: one
+  title: MyString
+  active: false
 
 two:
-  name: MyString
-  channel_id: 1
-  category: two
+  title: MyString
+  active: false
