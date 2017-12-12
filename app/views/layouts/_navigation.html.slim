@@ -1,0 +1,14 @@
+nav.top-bar.docs-bar.hide-for-small data-topbar=""
+  ul.title-area
+    li.name
+      h1
+        a href="https://foundation.zurb.com/"
+          span Messages APP
+  section.top-bar-section
+    ul.right
+      li.divider
+      li.has-form
+        - if user_signed_in?
+          = link_to 'LogOut', '/users/logout', method: :delete
+        - else
+          = link_to 'LogIn', '/users/login'
