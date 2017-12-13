@@ -1,9 +1,8 @@
 = simple_form_for(@channel) do |f|
   = f.error_notification
-
   .form-inputs
     = f.input :name
-    = f.input :channel_id
+    = f.input :channel_id, label: 'Channel ID'
     = f.association :category
 
   .form-actions

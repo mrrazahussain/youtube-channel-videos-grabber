@@ -15,7 +15,7 @@ table
       tr
         td = channel.name
         td = channel.channel_id
-        td = channel.category
+        td = channel.category.title
         td = link_to 'Show', channel
         td = link_to 'Edit', edit_channel_path(channel)
         td = link_to 'Destroy', channel, data: { confirm: 'Are you sure?' }, method: :delete

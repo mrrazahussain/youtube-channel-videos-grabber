@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211184655) do
+ActiveRecord::Schema.define(version: 20171213192215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20171211184655) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
-    t.integer "channel_id"
+    t.string "channel_id"
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,5 +48,19 @@ ActiveRecord::Schema.define(version: 20171211184655) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string "video_id"
+    t.string "title"
+    t.text "description"
+    t.datetime "published_at"
+    t.string "thumbnail_url"
+    t.time "duration"
+    t.bigint "channel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_videos_on_channel_id"
+  end
+
   add_foreign_key "channels", "categories"
+  add_foreign_key "videos", "channels"
 end

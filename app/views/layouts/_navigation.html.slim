@@ -6,6 +6,10 @@ nav.top-bar.docs-bar.hide-for-small data-topbar=""
           span Messages APP
   section.top-bar-section
     ul.right
+      li
+        = link_to 'Categories', categories_path
+      li
+        = link_to 'Channels', channels_path
       li.divider
       li.has-form
         - if user_signed_in?

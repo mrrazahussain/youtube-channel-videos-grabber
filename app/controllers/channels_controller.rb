@@ -24,6 +24,7 @@ class ChannelsController < ApplicationController
   # POST /channels
   # POST /channels.json
   def create
+    byebug
     @channel = Channel.new(channel_params)
 
     respond_to do |format|
