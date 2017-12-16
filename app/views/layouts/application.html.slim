@@ -11,11 +11,14 @@ html
 
     == csrf_meta_tags
   body
-    header
-      == render 'layouts/navigation'
-    main[role="main"]
-      == render 'layouts/messages'
-      == yield
-    footer
-      == render partial: "shared/footer"
+    .row
+      .large-12.columns
+        .row
+          == render 'layouts/navigation'
+        .row
+          .large-12.columns.small-12.columns
+            == render 'layouts/messages'
+            == yield
+        == render partial: "shared/footer"
+
     == javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'

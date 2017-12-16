@@ -1,0 +1,16 @@
+.large-4.small-6.columns.left
+  ul.pricing-table
+    li.title
+      = channel.name
+    li.bullet-item Active? #{channel.active? ? 'YES' : 'NO'}
+    li.bullet-item #{pluralize(channel.videos.size, 'video') }
+    li.cta-button
+      ul.button-group.text-center
+        li
+          == link_to 'Detail', channel, class: 'button tiny'
+        li
+          = link_to 'Fetch Videos', fetch_videos_path(channel.id), class: 'button tiny'
+        li
+          == link_to 'Edit', edit_channel_path(channel), class: 'button tiny success'
+        li
+          = link_to 'Delete', channel, data: { confirm: 'Are you sure?' }, method: :delete, class: 'button tiny alert'

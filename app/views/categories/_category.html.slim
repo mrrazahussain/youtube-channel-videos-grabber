@@ -1,0 +1,14 @@
+.large-4.small-6.columns.left
+  ul.pricing-table
+    li.title
+      = category.title
+    li.bullet-item Active? #{category.active? ? 'YES' : 'NO'}
+    li.bullet-item #{pluralize(category.channels.size, 'channel') }
+    li.cta-button
+      ul.button-group.text-center
+        li
+          == link_to 'Detail', category, class: 'button tiny'
+        li
+          == link_to 'Edit', edit_category_path(category), class: 'button tiny success'
+        li
+          = link_to 'Delete', category, data: { confirm: 'Are you sure?' }, method: :delete, class: 'button tiny alert'

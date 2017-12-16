@@ -1,23 +1,5 @@
-h1 Listing categories
-
-table
-  thead
-    tr
-      th Title
-      th Active
-      th
-      th
-      th
-
-  tbody
-    - @categories.each do |category|
-      tr
-        td = category.title
-        td = category.active
-        td = link_to 'Show', category
-        td = link_to 'Edit', edit_category_path(category)
-        td = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Category', new_category_path
+.panel.clearfix
+  h3.left Categories
+  = link_to 'New Category', new_category_path, class: 'button tiny success right'
+.row
+  == render partial: "category", collection: @categories

@@ -1,20 +1,40 @@
-nav.top-bar.docs-bar.hide-for-small data-topbar=""
-  ul.title-area
-    li.name
-      h1
-        a href="https://foundation.zurb.com/"
-          span Messages APP
-  section.top-bar-section
-    ul.right
-      li
-        = link_to 'Categories', categories_path
-      li
-        = link_to 'Channels', channels_path
-      li
-        = link_to 'Videos', videos_path
-      li.divider
-      li.has-form
+.large-12.columns
+  nav.top-bar data-topbar=""
+    ul.title-area
+      li.name
+        h1
+          a href="#"  Videos Grabber
+      li.toggle-topbar.menu-icon
+        a href="#"
+          span menu
+    section.top-bar-section
+      ul.right
         - if user_signed_in?
-          = link_to 'LogOut', '/users/logout', method: :delete
-        - else
-          = link_to 'LogIn', '/users/login'
+          li.divider
+          li
+            = link_to 'Categories', categories_path
+          li.divider
+          li
+            = link_to 'Channels', channels_path
+          li.divider
+          li
+            = link_to 'Videos', videos_path
+          li.divider
+          li.has-dropdown.not-click
+            a href="#"  Welcome
+            ul.dropdown
+              li.title.back.js-generated
+                h5
+                  a href="javascript:void(0)"  Back
+              li.parent-link.hide-for-medium-up
+                a.parent-link.js-generated href="#"  Welcome
+
+              li
+                - if user_signed_in?
+                  = link_to 'LogOut', '/users/logout', method: :delete
+                - else
+                  = link_to 'LogIn', '/users/login'
+              li
+        -else
+          li
+            = link_to 'LogIn', '/users/login'
