@@ -1,0 +1,11 @@
+tr
+  td
+    = video.title
+  td
+    = video.description.truncate(100)
+  td
+    = "#{video.published_at.strftime('%m/%d/%Y')} at #{video.published_at.strftime('%I:%M%p')}"
+  td
+    = video.duration.strftime("%H:%M:%S")
+  td
+    = video.channel.name

@@ -1,8 +1,9 @@
 class YoutubeService
-  attr_reader :channel_id, :videos_limit
+  attr_reader :channel_id, :videos_limit,:yt_channel_id
 
   def initialize(params)
     @channel_id = params[:channel_id]
+    @yt_channel_id = Channel.find_by(id: @channel_id).channel_id
     @videos_limit = params[:limit]
   end
 
@@ -10,32 +11,34 @@ class YoutubeService
     channel.videos.limit(videos_limit)
   end
 
-  def create_video
-
+  def create_video(video_detail)
+    Video.create!(video_detail)
   end
 
 
   def print_videos
-    puts "PRINT VIDOES METHOD CALLED"
     channel_videos.each do |video|
-      puts video_details(video).inspect
+      video_object = video_details(video)
+      create_video(video_object)
     end
   end
 
   def video_details(video)
     {
         title: video.title,
-        vidoe_id: video.id,
+        video_id: video.id,
         description: video.description,
         published_at: video.published_at,
         thumbnail_url: video.thumbnail_url,
-        duration: video.length
+        duration: video.length,
+        channel_id: channel_id
+
     }
   end
 
   private
   def channel
-    Yt::Channel.new id: channel_id
+    Yt::Channel.new id: yt_channel_id
   end
 
   def video(id)
