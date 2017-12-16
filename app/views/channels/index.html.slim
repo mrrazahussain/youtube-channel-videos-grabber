@@ -9,6 +9,7 @@ table
       th
       th
       th
+      th
 
   tbody
     - @channels.each do |channel|
@@ -16,6 +17,7 @@ table
         td = channel.name
         td = channel.channel_id
         td = channel.category.title
+        td = link_to 'Fetch Videos', fetch_videos_path(channel.id)
         td = link_to 'Show', channel
         td = link_to 'Edit', edit_channel_path(channel)
         td = link_to 'Destroy', channel, data: { confirm: 'Are you sure?' }, method: :delete

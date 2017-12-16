@@ -12,11 +12,11 @@ class YoutubeService
   end
 
   def create_video(video_detail)
-    Video.create!(video_detail)
+    Video.find_or_create_by!(video_detail)
   end
 
 
-  def print_videos
+  def fetch_and_create_videos
     channel_videos.each do |video|
       video_object = video_details(video)
       create_video(video_object)

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :channels
   resources :videos, only: :index
+  get 'videos/:channel_id', to: 'videos#fetch_videos', as: 'fetch_videos'
   devise_for :users, path_names: {
                        sign_in: 'login', sign_out: 'logout',
                    },
