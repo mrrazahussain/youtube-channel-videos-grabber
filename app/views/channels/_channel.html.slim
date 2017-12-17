@@ -1,13 +1,13 @@
 .large-4.small-6.columns.left
   ul.pricing-table
     li.title
-      = channel.name
+      == link_to channel.name, channel
+    li.description
+      = channel.description.truncate(100)
     li.bullet-item Active? #{channel.active? ? 'YES' : 'NO'}
     li.bullet-item #{pluralize(channel.videos.size, 'video') }
     li.cta-button
       ul.button-group.text-center
-        li
-          == link_to 'Detail', channel, class: 'button tiny'
         li
           = link_to 'Fetch Videos', fetch_videos_path(channel.id), class: 'button tiny'
         li

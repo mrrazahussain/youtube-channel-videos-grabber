@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20171216132444) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
+    t.text "description"
+    t.string "thumbnail_url"
     t.string "channel_id"
     t.boolean "active", default: true
     t.bigint "category_id"

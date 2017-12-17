@@ -1,15 +1,17 @@
-p#notice = notice
-
-p
-  strong Name:
-  = @channel.name
-p
-  strong Channel:
-  = @channel.channel_id
-p
-  strong Category:
-  = @channel.category
-
-=> link_to 'Edit', edit_channel_path(@channel)
-'|
-=< link_to 'Back', channels_path
+.row
+  .large-4.small-12.columns
+    img src= @channel.thumbnail_url style="width: 100%"
+    .hide-for-small.panel
+      h3 #{@channel.name}
+      h5.subheader
+        = @channel.description.truncate(100)
+    a href="#"
+    .panel.callout.radius
+      h6
+        = pluralize(@channel.videos.size, 'video')
+    h5.subheader.text-center
+      = link_to 'Edit', edit_channel_path(@channel),class: 'button tiny success text-center'
+      = link_to 'Back', channels_path, class: 'button tiny secondary'
+  .large-8.columns
+    .row
+      == render partial: "videos/video", collection: @channel.videos, as: :video
