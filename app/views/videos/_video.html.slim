@@ -1,15 +1,16 @@
-== render partial: 'shared/model_video_player',locals:{video_id: video.video_id}
-.large-4.small-6.columns.left
-  h5.text-center
-    = link_to video.channel.name, channel_path(video.channel)
-  img src=video.thumbnail_url style='width: 100%'
-  .panel
-    h5 = video.title
-    h6.subheader = video.description.truncate(100)
-    h6.subheader
-      = "#{video.published_at.strftime('%m/%d/%Y')} at #{video.published_at.strftime('%I:%M%p')}"
-    h6.subheader
-      = video.duration.strftime("%H:%M:%S")
-      br/
-      .text-center
-        a.radius.button.expand data-reveal-id="videoModal#{video.video_id}" href="#" Play
+== render partial: 'shared/model_video_player',locals:{video: video}
+div data-equalizer=""
+  .large-4.small-6.columns.left data-equalizer-watch=""
+    h5.text-center
+      = link_to video.channel.name, channel_path(video.channel)
+    img src=video.thumbnail_url style='width: 100%; cursor:pointer' data-reveal-id="videoModal#{video.video_id}"
+    .panel
+      h5 = video.title
+      h6.subheader = video.description.truncate(100)
+      h6.subheader
+        = "#{video.published_at.strftime('%m/%d/%Y')} at #{video.published_at.strftime('%I:%M%p')}"
+      h6.subheader
+        = video.duration.strftime("%H:%M:%S")
+        br/
+        .text-center
+          a.radius.button.expand data-reveal-id="videoModal#{video.video_id}" href="#" Play

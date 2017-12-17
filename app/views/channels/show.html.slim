@@ -10,8 +10,9 @@
       h6
         = pluralize(@channel.videos.size, 'video')
     h5.subheader.text-center
+      = link_to 'Fetch Videos', fetch_videos_path(@channel.id), class: 'button tiny'
       = link_to 'Edit', edit_channel_path(@channel),class: 'button tiny success text-center'
       = link_to 'Back', channels_path, class: 'button tiny secondary'
-  .large-8.columns
+  .large-8.columns.left
     .row
       == render partial: "videos/video", collection: @channel.videos, as: :video
