@@ -22,7 +22,7 @@ class Channel < ApplicationRecord
   def set_channel_details
     channel_id= self.channel_id
     channel = Yt::Channel.new id: channel_id
-    self.thumbnail_url= channel.thumbnail_url
+    self.thumbnail_url= channel.thumbnail_url(:high)
     self.description = channel.description
     self.save!
   end

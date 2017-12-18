@@ -1,5 +1,5 @@
 .row
-  .large-4.small-12.columns
+  .large-3.small-12.columns
     img src= @channel.thumbnail_url style="width: 100%"
     .hide-for-small.panel
       h3 #{@channel.name}
@@ -13,6 +13,6 @@
       = link_to 'Fetch Videos', fetch_videos_path(@channel.id), class: 'button tiny'
       = link_to 'Edit', edit_channel_path(@channel),class: 'button tiny success text-center'
       = link_to 'Back', channels_path, class: 'button tiny secondary'
-  .large-8.columns.left
-    .row
+  .large-9.columns.left
+    .row.flex-row.collapse
       == render partial: "videos/video", collection: @channel.videos, as: :video

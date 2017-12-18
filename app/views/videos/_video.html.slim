@@ -5,12 +5,13 @@ div data-equalizer=""
       = link_to video.channel.name, channel_path(video.channel)
     img src=video.thumbnail_url style='width: 100%; cursor:pointer' data-reveal-id="videoModal#{video.video_id}"
     .panel
-      h5 = video.title
-      h6.subheader = video.description.truncate(100)
-      h6.subheader
-        = "#{video.published_at.strftime('%m/%d/%Y')} at #{video.published_at.strftime('%I:%M%p')}"
-      h6.subheader
+      h6.subheader = video.title.truncate(100)
+      hr/
+      h6.subheader.text-center
+        = distance_of_time_in_words(Time.now, video.published_at)
+        /= "#{video.published_at.strftime('%m/%d/%Y')} at #{video.published_at.strftime('%I:%M%p')}"
+      h6.subheader.text-center
         = video.duration.strftime("%H:%M:%S")
         br/
         .text-center
-          a.radius.button.expand data-reveal-id="videoModal#{video.video_id}" href="#" Play
+          a.radius.button.expand.tiny data-reveal-id="videoModal#{video.video_id}" href="#" Play

@@ -29,7 +29,7 @@ class YoutubeService
         video_id: video.id,
         description: video.description,
         published_at: video.published_at,
-        thumbnail_url: video.thumbnail_url,
+        thumbnail_url: video.thumbnail_url(:high),
         duration: video.length,
         channel_id: channel_id
 

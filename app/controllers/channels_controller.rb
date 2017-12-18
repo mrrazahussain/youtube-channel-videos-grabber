@@ -4,7 +4,13 @@ class ChannelsController < ApplicationController
   # GET /channels
   # GET /channels.json
   def index
-    @channels = Channel.all
+    if params[:category_id].present?
+      @category = Category.find_by(id:params[:category_id])
+      @channels = @category.channels
+
+    else
+      @channels = Channel.all
+    end
   end
 
   # GET /channels/1
@@ -62,13 +68,13 @@ class ChannelsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_channel
-      @channel = Channel.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_channel
+    @channel = Channel.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def channel_params
-      params.require(:channel).permit(:name, :channel_id, :category_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def channel_params
+    params.require(:channel).permit(:name, :channel_id, :category_id)
+  end
 end

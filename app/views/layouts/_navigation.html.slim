@@ -11,15 +11,36 @@
       ul.right
         - if user_signed_in?
           li.divider
-          li
-            = link_to 'Categories', categories_path
-          li.divider
-          li
-            = link_to 'Channels', channels_path
-          li.divider
-          li
-            = link_to 'Videos', videos_path
-          li.divider
+          li.has-dropdown.not-click
+            a href=categories_path
+              | Categories
+            ul.dropdown
+              li.title.back.js-generated
+                h5
+                  a href="javascript:void(0)"  Back
+              li.parent-link.hide-for-medium-up
+                a.parent-link.js-generated href=categories_path
+                  |Categories
+
+              li
+                = link_to 'New Category', new_category_path
+              li
+            li.divider
+              li.has-dropdown.not-click
+                a href=channels_path
+                  | Channels
+                ul.dropdown
+                  li.title.back.js-generated
+                    h5
+                      a href="javascript:void(0)"  Back
+                  li.parent-link.hide-for-medium-up
+                    a.parent-link.js-generated href=channels_path
+                      |Channels
+
+                  li
+                    = link_to 'New Category', new_channel_path
+                  li
+
           li.has-dropdown.not-click
             a href="#"  Welcome
             ul.dropdown

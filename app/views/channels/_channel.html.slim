@@ -1,13 +1,15 @@
 .large-4.small-6.columns.left
   ul.pricing-table
     li.title
-      == link_to channel.name, channel
+      - channel_name = @category.present? ? "#{@category.title}: #{channel.name}": channel.name
+      == link_to channel_name, channel
     li.description
       = channel.description.truncate(100)
     li.bullet-item Active? #{channel.active? ? 'YES' : 'NO'}
-    li.bullet-item #{pluralize(channel.videos.size, 'video') }
-    li.cta-button
-      ul.button-group.text-center
+    li.bullet-item
+      == link_to "#{pluralize(channel.videos.size, 'video') }", channel
+    li.cta-button.text-center
+      ul.button-group
         li
           = link_to 'Fetch Videos', fetch_videos_path(channel.id), class: 'button tiny'
         li

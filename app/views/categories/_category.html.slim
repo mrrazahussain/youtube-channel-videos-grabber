@@ -3,7 +3,9 @@
     li.title
       = category.title
     li.bullet-item Active? #{category.active? ? 'YES' : 'NO'}
-    li.bullet-item #{pluralize(category.channels.size, 'channel') }
+    li.bullet-item
+      /| #{pluralize(category.channels.size, 'channel') }
+      = link_to pluralize(category.channels.size, 'channel'), channels_path(category_id: category.id)
     li.cta-button
       ul.button-group.text-center
         li
